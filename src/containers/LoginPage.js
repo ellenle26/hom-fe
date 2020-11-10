@@ -11,6 +11,7 @@ import "./loginPage.css";
 import NavBar from "./NavBar";
 
 const LoginPage = () => {
+  console.log(process.env.REACT_APP_FB_APP_ID);
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.auth.user);
@@ -34,7 +35,6 @@ const LoginPage = () => {
   //end handle form submit-----
   const responseFacebook = (response) => {
     dispatch(authActions.loginWithFB(response.accessToken));
-    console.log(process.env.REACT_APP_FB_APP_ID);
   };
 
   const responseGoogle = (response) => {
