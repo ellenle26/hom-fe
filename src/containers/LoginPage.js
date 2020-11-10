@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
 import FacebookLogin from "react-facebook-login";
-import GoogleLogin from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 import authActions from "../redux/actions/authActions";
 import "./loginPage.css";
 import NavBar from "./NavBar";
