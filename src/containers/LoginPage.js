@@ -34,6 +34,7 @@ const LoginPage = () => {
   //end handle form submit-----
   const responseFacebook = (response) => {
     dispatch(authActions.loginWithFB(response.accessToken));
+    console.log(process.env.REACT_APP_FB_APP_ID);
   };
 
   const responseGoogle = (response) => {
@@ -92,7 +93,6 @@ const LoginPage = () => {
               callback={responseFacebook}
               icon="fa-facebook"
             />
-            {console.log(process.env.REACT_APP_FB_APP_ID)}
           </div>
           <br />
           <div className="horizontalCenter">
