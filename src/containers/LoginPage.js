@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import "antd/dist/antd.css";
-import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
@@ -13,13 +13,12 @@ import NavBar from "./NavBar";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const user = useSelector((state) => state.auth.user);
   // handle form submission---------
   const [form] = Form.useForm();
   const onFinish = (values) => {
     const { email, password } = values;
     dispatch(authActions.login(email, password));
-    history.push("/");
   };
   const onReset = () => {
     form.resetFields();
@@ -35,14 +34,13 @@ const LoginPage = () => {
   //end handle form submit-----
   const responseFacebook = (response) => {
     dispatch(authActions.loginWithFB(response.accessToken));
-    history.push("/");
   };
 
   const responseGoogle = (response) => {
     dispatch(authActions.loginWithGG(response.accessToken));
-    history.push("/");
   };
 
+  if (user) return <Redirect to="/" />;
   return (
     <>
       <NavBar />
@@ -100,7 +98,7 @@ const LoginPage = () => {
               clientId={process.env.REACT_APP_GG_CLIENT_ID}
               buttonText="LOGIN WITH GOOGLE"
               onSuccess={responseGoogle}
-              onFailure={responseGoogle}
+              // onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
             />
           </div>
