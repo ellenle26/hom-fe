@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Montez&display=swap");
+
+.thumbnail {
+  width: 50%;
+  height: fit-content;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
+}
+
+.divCar {
+  display: flex !important;
+  height: 65vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imgCar {
+  height: 65vh;
+  width: auto;
+}
+
+.roomCard {
+  max-width: 800px;
+  min-height: 400px;
+  height: fit-content;
+  background-color: white;
+  padding: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.roomInfo {
+  width: 50%;
+  min-width: 340px;
+  padding: 0 5%;
+}
+
+.roomName {
+  padding: 0;
+  text-transform: capitalize;
+  font-size: 40px;
+  font-family: "Montez", cursive;
+  text-align: center;
+}
+
+.roomPrice {
+  font-size: 13px;
+  text-align: center;
+  font-style: italic;
+}

@@ -1,0 +1,34 @@
+.row {
+  width: 100%;
+  height: 100px;
+}
+
+.col1,
+.col2,
+.col3,
+.col4,
+.col5 {
+  word-break: break-all;
+  width: 20%;
+  min-width: 102px;
+  text-align: center;
+  border: 1px solid lightgray;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userTable {
+  width: 100vw;
+  overflow-x: scroll;
+}
+
+@media only screen and (max-width: 510px) {
+  .userTable {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

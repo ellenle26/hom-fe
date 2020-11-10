@@ -1,0 +1,42 @@
+.status:hover {
+  color: red;
+}
+
+.table-div {
+  width: 100vw;
+  overflow-x: scroll;
+}
+
+.table {
+  width: 100%;
+}
+
+.frozenCol {
+  width: 160px;
+  position: absolute;
+  left: 0;
+  background-color: white;
+}
+
+.secondCol {
+  padding-left: 160px;
+}
+
+.expand {
+  min-width: 120px;
+}
+
+@media only screen and (max-width: 950px) {
+  .table {
+    width: 950px;
+  }
+}
+
+.cancelEB {
+  color: gray;
+}
+
+.cancelEB:hover {
+  cursor: pointer;
+  color: black;
+}

@@ -1,0 +1,41 @@
+.collapse {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  border: solid 2px rgba(212, 212, 212, 0.884);
+  text-align: center;
+}
+
+.td1 {
+  width: 5%;
+}
+
+.td2 {
+  width: 25%;
+}
+
+.td3 {
+  width: 25%;
+}
+
+.td4,
+.td5,
+.td6 {
+  width: 15%;
+}
+
+.discount,
+.total {
+  width: 100%;
+  height: fit-content;
+  border: solid 2px black;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-weight: 900;
+  font-size: 22px;
+}

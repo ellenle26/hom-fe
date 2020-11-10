@@ -1,0 +1,9 @@
+.poster {
+  width: 50vw;
+  height: auto;
+  text-align: center;
+}
+
+.poster:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Almendra+Display&family=Cookie&display=swap");
+
+.homePage {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.homePage img {
+  position: absolute;
+  min-height: 100vh;
+  min-width: 100vw;
+  /* object-fit: cover; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.homePage img.top {
+  animation-name: fadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;
+}
+
+.homePagelayer {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000046;
+  position: absolute;
+  top: 0px;
+  color: #f4f1de;
+  z-index: 0;
+}
+
+.welcomeNote {
+  /* height: calc(100% - 400px); */
+  position: absolute;
+  top: 120px;
+  padding: 0px 30px;
+  max-width: 100vw;
+  font-family: "Almendra Display", cursive;
+  font-size: 40px;
+  font-weight: 900;
+  /* font-family: "Cookie", cursive; */
+  /* font-size: 50px;
+  font-weight: 500; */
+}

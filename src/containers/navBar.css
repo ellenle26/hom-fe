@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap");
+
+.large {
+  visibility: visible;
+}
+
+.navBar {
+  width: 100%;
+  height: 100px;
+  border-bottom: solid 1px rgba(199, 199, 199, 0.342);
+}
+
+.leftNav {
+  width: 20%;
+  height: 100px;
+}
+
+.logo {
+  width: 80px;
+  background-color: transparent;
+  font-size: 50px;
+  font-family: "Princess Sofia", cursive;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.rightNav {
+  width: 20%;
+  height: 100px;
+}
+
+.centerNav {
+  width: 60%;
+  height: 100px;
+  /* border-left: solid 1px rgba(255, 255, 255, 0.329); */
+  border-right: solid 1px rgba(199, 199, 199, 0.342);
+}
+
+.auth:hover {
+  cursor: pointer;
+}
+
+.centerTop {
+  width: 100%;
+  height: 50%;
+  padding: 0px 10%;
+  border-bottom: solid 1px rgba(199, 199, 199, 0.342);
+  border-left: solid 1px rgba(199, 199, 199, 0.342);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.centerBttm {
+  width: 100%;
+  height: 50%;
+}
+
+.item {
+  width: 33%;
+  /* width: 20%; */
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: solid 1px rgba(199, 199, 199, 0.342);
+  overflow: hidden;
+  text-align: center;
+}
+
+.item1,
+.item2 {
+  height: 49px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item2 {
+  visibility: hidden;
+  position: absolute;
+  bottom: -50px;
+}
+
+.item:hover .item2 {
+  cursor: pointer;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(233, 233, 233, 0.226);
+}
+
+.item:hover .item1 {
+  visibility: hidden;
+  position: absolute;
+  bottom: -50px;
+}
+
+.small,
+.foot {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .small,
+  .foot {
+    visibility: visible;
+  }
+
+  .logo {
+    font-size: 40px;
+  }
+
+  .large {
+    visibility: hidden;
+  }
+  /* 
+  .foot {
+    position: fixed;
+    bottom: 10px;
+    width: 100vw;
+  } */
+
+  .navBarSmall {
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 120px;
+    border-bottom: solid 1px rgba(216, 216, 216, 0.342);
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .topNav {
+    width: 85%;
+    height: 60px;
+    border-bottom: solid 1px rgba(216, 216, 216, 0.342);
+  }
+
+  .bttmNav {
+    width: 85%;
+    height: 60px;
+  }
+
+  .item {
+    height: 60px;
+  }
+
+  .item1,
+  .item2 {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item2 {
+    visibility: hidden;
+    position: absolute;
+    bottom: -50px;
+  }
+
+  .item:hover .item2 {
+    cursor: pointer;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(233, 233, 233, 0.226);
+  }
+
+  .item:hover .item1 {
+    visibility: hidden;
+    position: absolute;
+    bottom: -60px;
+  }
+}
+
+.social {
+  font-size: 25px;
+}
+.social:hover {
+  cursor: pointer;
+}
