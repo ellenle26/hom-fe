@@ -2,7 +2,7 @@ import * as types from "../constants/authConstants";
 
 const initialState = {
   isAuthorized: false,
-  user: {},
+  user: null,
   accessToken: "",
   loading: false,
   message: "",
