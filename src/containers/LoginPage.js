@@ -90,7 +90,9 @@ const LoginPage = () => {
               autoLoad={false}
               fields="name,email,picture"
               callback={responseFacebook}
+              icon="fa-facebook"
             />
+            {console.log(process.env.REACT_APP_FB_APP_ID)}
           </div>
           <br />
           <div className="horizontalCenter">
