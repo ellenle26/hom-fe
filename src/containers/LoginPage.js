@@ -102,7 +102,6 @@ const LoginPage = () => {
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
-              autoLoad={false}
             />
           </div>
           <br />
