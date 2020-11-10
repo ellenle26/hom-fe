@@ -19,7 +19,7 @@ const LoginPage = () => {
   const onFinish = (values) => {
     const { email, password } = values;
     dispatch(authActions.login(email, password));
-    // history.push("/");
+    history.push("/");
   };
   const onReset = () => {
     form.resetFields();
@@ -35,12 +35,12 @@ const LoginPage = () => {
   //end handle form submit-----
   const responseFacebook = (response) => {
     dispatch(authActions.loginWithFB(response.accessToken));
-    // history.push("/");
+    history.push("/");
   };
 
   const responseGoogle = (response) => {
     dispatch(authActions.loginWithGG(response.accessToken));
-    // history.push("/");
+    history.push("/");
   };
 
   return (
