@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import "./navBar.css";
+import { message } from "antd";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -96,7 +97,11 @@ const NavBar = () => {
               <div className="item1">BOOKING</div>
               <div
                 className="item2"
-                onClick={() => history.push("/bookings/user")}
+                onClick={() => {
+                  !user
+                    ? history.push("/login")
+                    : history.push("/bookings/user");
+                }}
               >
                 <BlockOutlined style={{ fontSize: "20px" }} />
               </div>
