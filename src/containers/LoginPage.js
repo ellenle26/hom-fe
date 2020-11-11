@@ -45,7 +45,7 @@ const LoginPage = () => {
   return (
     <>
       <NavBar />
-      <div className="login">
+      <div className="login margin">
         <div>
           <h1 className="horizontalCenter">Log in</h1>
           <Form {...layout} form={form} onFinish={onFinish}>
@@ -98,9 +98,9 @@ const LoginPage = () => {
           <div className="horizontalCenter">
             <GoogleLogin
               clientId={process.env.REACT_APP_GG_CLIENT_ID}
+              uxMode="popup"
               buttonText="LOGIN WITH GOOGLE"
               onSuccess={responseGoogle}
-              // onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
             />
           </div>

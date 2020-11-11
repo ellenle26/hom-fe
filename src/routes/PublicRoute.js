@@ -13,6 +13,7 @@ import StaffRoute from "./StaffRoute";
 import RoomList from "../containers/RoomList";
 import BookingPage from "../containers/BookingPage";
 import EventPage from "../containers/EventPage";
+import AboutUs from "../components/AboutUs";
 
 const PublicRoute = () => {
   return (
@@ -22,6 +23,7 @@ const PublicRoute = () => {
       <Route exact path="/register" component={SignupPage} />
       <Route exact path="/rooms" component={RoomList} />
       <Route exact path="/events" component={EventPage} />
+      <Route exact path="/about" component={AboutUs} />
       <PrivateRoute exact path="/bookings/user" component={BookingPage} />
       <PrivateRoute exact path="/me" component={MePage} />
       <PrivateOwnerRoute path="/owner" component={OwnerRoute} />

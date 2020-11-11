@@ -76,7 +76,7 @@ const AddEventPage = () => {
   };
 
   return (
-    <div>
+    <div className="margin">
       <div>
         <h1 className="horizontalCenter">Add Event</h1>
         <Form {...layout} form={form} onFinish={onFinish}>

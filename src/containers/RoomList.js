@@ -6,6 +6,7 @@ import { message } from "antd";
 import bookingActions from "../redux/actions/bookingActions";
 import RoomCard from "../components/RoomCard";
 import NavBar from "./NavBar";
+import Footer from "../components/Footer";
 
 const RoomList = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const RoomList = () => {
   const user = useSelector((state) => state.auth.user);
   const [checkIn, setCheckIn] = useState();
   const [checkOut, setCheckOut] = useState();
+  const redirectUrl = useSelector((state) => state.booking.redirect);
 
   const getRoomList = () => {
     dispatch(roomActions.getRooms());
@@ -22,10 +24,6 @@ const RoomList = () => {
   const bookRoom = (roomId, price) => {
     if (!user) {
       message.warning("Please log in to book and get promotion code.");
-      return;
-    }
-    if (user.authLevel === "staff" || user.authLevel === "owner") {
-      message.warning("This booking page is for customer only");
       return;
     }
     if (!checkIn || !checkOut) {
@@ -37,20 +35,21 @@ const RoomList = () => {
     );
     setCheckIn("");
     setCheckOut("");
-    history.push("/bookings/user");
   };
 
   useEffect(() => {
     getRoomList();
   }, []);
 
+  if (redirectUrl) {
+    dispatch(bookingActions.clearRedirect());
+    history.push("/bookings/user");
+  }
+
   return (
     <>
       <NavBar />
-      <div
-        className="verticalCenter container"
-        style={{ backgroundColor: "#f3e9dc", paddingTop: "20px" }}
-      >
+      <div className="verticalCenter container margin">
         {roomList &&
           roomList.map((room) => (
             <RoomCard
@@ -62,6 +61,7 @@ const RoomList = () => {
             />
           ))}
       </div>
+      <Footer />
     </>
   );
 };

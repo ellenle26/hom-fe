@@ -99,12 +99,50 @@ const RoomsPage = () => {
                 &nbsp;
                 {roomList[2].name}
               </div>
+              <div className="horizontalCenter">
+                <hr
+                  style={{
+                    width: "40px",
+                    height: "4px",
+                    backgroundColor: "#b56576",
+                    color: "transparent",
+                  }}
+                />{" "}
+                &nbsp;
+                {roomList[3].name}
+              </div>
+              <div className="horizontalCenter">
+                <hr
+                  style={{
+                    width: "40px",
+                    height: "4px",
+                    backgroundColor: "#b3a394",
+                    color: "transparent",
+                  }}
+                />{" "}
+                &nbsp;
+                {roomList[4].name}
+              </div>
+              <div className="horizontalCenter">
+                <hr
+                  style={{
+                    width: "40px",
+                    height: "4px",
+                    backgroundColor: "#1f7a8c",
+                    color: "transparent",
+                  }}
+                />{" "}
+                &nbsp;
+                {roomList[5].name}
+              </div>
             </div>
           </div>
         </div>
-        <button onClick={() => history.push("/owner/rooms/add")}>
-          Add room
-        </button>
+        <div className="margin">
+          <button onClick={() => history.push("/owner/rooms/add")}>
+            Add room
+          </button>
+        </div>
       </div>
     )
   );

@@ -66,14 +66,12 @@ const GeneralPage = () => {
 
   return (
     <div>
-      <div style={{ width: "100vw", overflowX: "scroll" }}>
-        <>
-          {roomList.length > 0 && (
-            <GeneralChart totalRevenue={totalRevenue} roomList={roomList} />
-          )}
-        </>
+      <div style={{ width: "100vw", overflowX: "scroll", maxWidth: "100%" }}>
+        {roomList.length > 0 && (
+          <GeneralChart totalRevenue={totalRevenue} roomList={roomList} />
+        )}
       </div>
-      <div style={{ width: "100vw", overflowX: "scroll" }}>
+      <div style={{ width: "100vw", overflowX: "scroll", maxWidth: "100%" }}>
         <div style={{ padding: "20px 20px" }}>
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
@@ -84,19 +82,25 @@ const GeneralPage = () => {
             buttonText="Download as XLS"
           />
           <table id="table-to-xls">
-            <tr style={{ textAlign: "center" }}>
-              <th>Booking#</th>
-              <th>Created on</th>
-              <th>Booking status</th>
-              <th>Booked by</th>
-              <th>Contact</th>
-              <th>Room name</th>
-              <th>Room rate ($)</th>
-              <th>Check in</th>
-              <th>Check out</th>
-              <th>Booked price ($)</th>
-              <th>Total stay (nights)</th>
-              <th>Revenue</th>
+            <tr
+              style={{
+                textAlign: "center",
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+            >
+              <td>Booking#</td>
+              <td>Created on</td>
+              <td>Booking status</td>
+              <td>Booked by</td>
+              <td>Contact</td>
+              <td>Room name</td>
+              <td>Room rate ($)</td>
+              <td>Check in</td>
+              <td>Check out</td>
+              <td>Booked price ($)</td>
+              <td>Total stay (nights)</td>
+              <td>Revenue</td>
             </tr>
             {bookings.length > 0 &&
               bookings.map((b) => (

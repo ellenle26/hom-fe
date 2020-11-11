@@ -20,8 +20,15 @@
   align-items: center;
 }
 
+.avatarimage {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
 .userTable {
   width: 100vw;
+  margin-bottom: 50px;
   overflow-x: scroll;
 }
 

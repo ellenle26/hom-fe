@@ -9,6 +9,7 @@ import AddEventPage from "../containers/owner/AddEventPage";
 import GeneralPage from "../containers/owner/GeneralPage";
 import { Tabs } from "antd";
 import NavBar from "../containers/NavBar";
+import Footer from "../components/Footer";
 
 const StaffRoute = () => {
   const history = useHistory();
@@ -40,6 +41,7 @@ const StaffRoute = () => {
         <Route exact path="/owner/events/add" component={AddEventPage} />
         <Route exact path="/owner/general" component={GeneralPage} />
       </Switch>
+      <Footer />
     </>
   );
 };

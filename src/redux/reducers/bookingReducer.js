@@ -2,8 +2,10 @@ import * as types from "../constants/bookingConstant";
 
 const initialState = {
   bookingList: [],
+  searchList: [],
   booking: {},
   loading: false,
+  redirect: "",
 };
 
 const bookingReducer = (state = initialState, action) => {
@@ -18,11 +20,19 @@ const bookingReducer = (state = initialState, action) => {
     case types.CANCEL_PENDING_BOOKING_REQUEST:
     case types.GET_USER_PENDING_BOOKING_REQUEST:
     case types.CANCEL_ENTIRE_BOOKING_REQUEST:
+    case types.SEARCH_BOOKING_REQUEST:
       return { ...state, loading: true };
 
     case types.SET_BOOKING_STAT_SUCCESS:
-    case types.ADD_BOOKING_SUCCESS:
       return { ...state, booking: payload, loading: false };
+
+    case types.ADD_BOOKING_SUCCESS:
+      return {
+        ...state,
+        booking: payload,
+        redirect: "/bookings/user",
+        loading: false,
+      };
 
     case types.GET_USER_BOOKING_SUCCESS:
     case types.PAYMENT_SUCCESS:
@@ -33,6 +43,9 @@ const bookingReducer = (state = initialState, action) => {
     case types.CANCEL_ENTIRE_BOOKING_SUCCESS:
       return { ...state, bookingList: payload, loading: false };
 
+    case types.SEARCH_BOOKING_SUCCESS:
+      return { ...state, searchList: payload, loading: false };
+
     case types.ADD_BOOKING_FAILURE:
     case types.GET_USER_BOOKING_FAILURE:
     case types.PAYMENT_FAILURE:
@@ -42,8 +55,10 @@ const bookingReducer = (state = initialState, action) => {
     case types.CANCEL_PENDING_BOOKING_FAILURE:
     case types.GET_USER_PENDING_BOOKING_FAILURE:
     case types.CANCEL_ENTIRE_BOOKING_FAILURE:
+    case types.SEARCH_BOOKING_FAILURE:
       return { ...state, loading: false };
-
+    case "CLEAR_REDIRECT":
+      return { ...state, redirect: "" };
     default:
       return { ...state };
   }

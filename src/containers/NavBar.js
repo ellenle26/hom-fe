@@ -15,7 +15,6 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import "./navBar.css";
-import { message } from "antd";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const NavBar = () => {
     if (user && user.authLevel === "user") {
       history.push("/me");
     } else if (user && user.authLevel === "staff") {
-      history.push("/staff/rooms");
+      history.push("/staff/bookings");
     } else {
       history.push("/owner/users");
     }
@@ -60,7 +59,7 @@ const NavBar = () => {
             ) : (
               <>
                 <div className="auth" onClick={() => history.push("/register")}>
-                  <UpOutlined /> &nbsp; Sign up
+                  <UpOutlined /> &nbsp; Join us
                 </div>
                 <div className="auth" onClick={() => history.push("/login")}>
                   <LoginOutlined /> &nbsp; Log in
@@ -71,7 +70,7 @@ const NavBar = () => {
           <div className="horizontalJustify centerBttm">
             <div className="item">
               <div className="item1">About us</div>
-              <div className="item2">
+              <div className="item2" onClick={() => history.push("/about")}>
                 <InfoCircleOutlined style={{ fontSize: "20px" }} />
               </div>
             </div>
@@ -98,9 +97,7 @@ const NavBar = () => {
               <div
                 className="item2"
                 onClick={() => {
-                  !user
-                    ? history.push("/login")
-                    : history.push("/bookings/user");
+                  history.push("/bookings/user");
                 }}
               >
                 <BlockOutlined style={{ fontSize: "20px" }} />
@@ -135,7 +132,7 @@ const NavBar = () => {
           ) : (
             <>
               <div className="auth" onClick={() => history.push("/register")}>
-                <UpOutlined /> &nbsp; Sign up
+                <UpOutlined /> &nbsp; Join us
               </div>
               <div className="logo" onClick={() => history.push("/")}>
                 hôm
@@ -150,7 +147,7 @@ const NavBar = () => {
           <div className="horizontalJustify centerBttm">
             <div className="item" style={{ borderLeft: "none" }}>
               <div className="item1">About us</div>
-              <div className="item2">
+              <div className="item2" onClick={() => history.push("/about")}>
                 <InfoCircleOutlined style={{ fontSize: "20px" }} />
               </div>
             </div>

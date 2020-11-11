@@ -50,7 +50,7 @@ const OwnerPage = () => {
           userList.map((user) => (
             <div className="row horizontalCenter">
               <div className="col1">
-                <img src={user.avatarUrl} alt="" />
+                <img src={user.avatarUrl} alt="" className="avatarimage" />
               </div>
               <div className="col2">{user.name}</div>
               <div className="col3">{user.email}</div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
 import { DatePicker, Space, message, Modal, Carousel } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import moment from "moment";
@@ -36,7 +35,10 @@ const RoomCard = ({ room, bookRoom, setCheckIn, setCheckOut }) => {
   };
 
   return (
-    <div className="horizontalCenter roomCard">
+    <div
+      className="horizontalCenter roomCard"
+      style={{ backgroundColor: "#f3eee8" }}
+    >
       <div
         className="thumbnail horizontalCenter"
         onClick={() => setVisible(true)}
@@ -60,7 +62,6 @@ const RoomCard = ({ room, bookRoom, setCheckIn, setCheckOut }) => {
           {room.facilities.map((fac) => (
             <li>{fac}</li>
           ))}
-          ...
         </ul>
         <div>
           <UserOutlined /> {room.capacity}

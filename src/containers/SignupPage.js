@@ -59,7 +59,7 @@ const SignupPage = () => {
   return (
     <>
       <NavBar />
-      <div className="register">
+      <div className="register margin">
         <div>
           <h1 className="horizontalCenter">Sign up</h1>
           <Form {...layout} form={form} onFinish={onFinish}>

@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 import { Calendar } from "antd";
 import eventActions from "../redux/actions/eventActions";
 import moment from "moment";
+import Footer from "../components/Footer";
 
 const EventPage = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const EventPage = () => {
     <>
       {console.log("event list neeee", eventByDate)}
       <NavBar />
-      <div className="verticalCenter container">
+      <div className="verticalCenter container margin">
         <Calendar
           fullscreen={false}
           mode="month"
@@ -90,6 +91,7 @@ const EventPage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

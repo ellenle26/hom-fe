@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap");
+
+.storyImg {
+  width: 100%;
+  top: 100px;
+}
+
+.hom {
+  width: 100px;
+  height: 100px;
+  font-size: 40px;
+  position: absolute;
+  left: 10%;
+  background-color: white;
+  border: 2px black solid;
+  z-index: 1;
+  font-family: "Princess Sofia", cursive;
+}
+
+.story {
+  width: 70%;
+  position: absolute;
+  left: 15%;
+  background-color: white;
+  border: 2px black solid;
+  padding: 50px 30px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+  .contain {
+    padding-top: 20px;
+  }
+}

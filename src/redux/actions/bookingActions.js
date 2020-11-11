@@ -17,6 +17,7 @@ bookingActions.addBooking = (id, price, checkIn, checkOut, userId) => async (
       userId,
     });
     dispatch({ type: types.ADD_BOOKING_SUCCESS, payload: res.data.data });
+    message.success(`${res.data.message}!`);
   } catch (err) {
     dispatch({ type: types.ADD_BOOKING_FAILURE, payload: err.message });
   }
@@ -139,6 +140,23 @@ bookingActions.cancelEBooking = (bookingNo) => async (dispatch) => {
       type: types.CANCEL_ENTIRE_BOOKING_FAILURE,
       payload: err.message,
     });
+  }
+};
+
+bookingActions.clearRedirect = () => async (dispatch) => {
+  dispatch({
+    type: "CLEAR_REDIRECT",
+  });
+};
+
+bookingActions.searchBooking = (bookingNo, date) => async (dispatch) => {
+  dispatch({ type: types.SEARCH_BOOKING_REQUEST, payload: null });
+  try {
+    const res = await api.post("/bookings/search", { bookingNo, date });
+    dispatch({ type: types.SEARCH_BOOKING_SUCCESS, payload: res.data.data });
+    message.success(`Found ${res.data.data.length} booking(s)!`);
+  } catch (err) {
+    dispatch({ type: types.SEARCH_BOOKING_FAILURE, payload: err.message });
   }
 };
 

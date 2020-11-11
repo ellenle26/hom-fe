@@ -54,7 +54,6 @@ const AddRoomPage = () => {
         if (result.event === "success") {
           let newImg = result.info.secure_url;
           setRoomImages([...roomImages, newImg]);
-          console.log([...roomImages, newImg]);
         }
       }
     );
@@ -198,7 +197,7 @@ const AddRoomPage = () => {
           <br />
           <div className="horizontalCenter">
             <Button type="primary" htmlType="submit">
-              Sign up
+              Create room
             </Button>
             <Button htmlType="button" onClick={onReset}>
               Reset form

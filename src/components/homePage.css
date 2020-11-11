@@ -8,6 +8,7 @@
   left: 0;
   overflow: hidden;
 }
+
 @keyframes fadeInOut {
   0% {
     opacity: 1;
@@ -48,10 +49,12 @@
 .homePagelayer {
   width: 100vw;
   height: 100vh;
-  background-color: #00000046;
+  background-color: #5858582d;
   position: absolute;
   top: 0px;
-  color: #f4f1de;
+  /* color: #f4f1de; */
+  color: white;
+  text-align: center;
   z-index: 0;
 }
 
@@ -62,8 +65,9 @@
   padding: 0px 30px;
   max-width: 100vw;
   font-family: "Almendra Display", cursive;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 900;
+  width: 100%;
   /* font-family: "Cookie", cursive; */
   /* font-size: 50px;
   font-weight: 500; */

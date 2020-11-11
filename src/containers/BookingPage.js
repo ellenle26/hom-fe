@@ -6,11 +6,13 @@ import bookingActions from "../redux/actions/bookingActions";
 import UserBookingCart from "../components/UserBookingCart";
 import "./bookingPage.css";
 import NavBar from "./NavBar";
+import Footer from "../components/Footer";
 
 const BookingPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const bookingList = useSelector((state) => state.booking.bookingList);
+
   const user = useSelector((state) => state.auth.user);
 
   const getUserPendingBooking = () => {
@@ -42,7 +44,6 @@ const BookingPage = () => {
     message.success(
       "Please check your email for booking confirmation. Thank you!"
     );
-    history.push("/rooms");
   };
 
   const totalPayment = () => {
@@ -64,7 +65,7 @@ const BookingPage = () => {
   return (
     <>
       <NavBar />
-      <div className="verticalJustify container">
+      <div className="verticalJustify container margin">
         {bookingList && console.log("list booking day ne huhu", bookingList)}
         <h2>Booking</h2>
         {bookingList.length < 0 ? (
@@ -167,6 +168,7 @@ const BookingPage = () => {
           </Collapse>
         )}
       </div>
+      <Footer />
     </>
   );
 };
