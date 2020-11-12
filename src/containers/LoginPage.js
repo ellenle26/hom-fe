@@ -47,7 +47,7 @@ const LoginPage = () => {
       <NavBar />
       <div className="login margin">
         <div>
-          <h1 className="horizontalCenter">Log in</h1>
+          <div className="headTitle">Log in</div>
           <Form {...layout} form={form} onFinish={onFinish}>
             <Form.Item
               name="email"
@@ -79,6 +79,7 @@ const LoginPage = () => {
               <Button type="primary" htmlType="submit">
                 Log in
               </Button>
+              &nbsp;
               <Button htmlType="button" onClick={onReset}>
                 Reset form
               </Button>

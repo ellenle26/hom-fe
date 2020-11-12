@@ -13,7 +13,6 @@ const RoomChart = ({ roomList, totalBookDays }) => {
   return (
     roomList.length > 0 && (
       <XYPlot width={500} height={500}>
-        {console.log(totalBookDays(roomList[0].booking))}
         <HorizontalGridLines style={{ stroke: "#B7E9ED" }} />
         <VerticalGridLines style={{ stroke: "#B7E9ED" }} />
         <XAxis
@@ -47,6 +46,33 @@ const RoomChart = ({ roomList, totalBookDays }) => {
           className="first-series"
           data={totalBookDays(roomList[2].booking)}
           color="#b56576"
+          style={{
+            strokeLinejoin: "round",
+            strokeWidth: 4,
+          }}
+        />
+        <LineSeries
+          className="first-series"
+          data={totalBookDays(roomList[3].booking)}
+          color="#60495a"
+          style={{
+            strokeLinejoin: "round",
+            strokeWidth: 4,
+          }}
+        />
+        <LineSeries
+          className="first-series"
+          data={totalBookDays(roomList[4].booking)}
+          color="#e4b363"
+          style={{
+            strokeLinejoin: "round",
+            strokeWidth: 4,
+          }}
+        />
+        <LineSeries
+          className="first-series"
+          data={totalBookDays(roomList[5].booking)}
+          color="#ffc0be"
           style={{
             strokeLinejoin: "round",
             strokeWidth: 4,

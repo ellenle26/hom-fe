@@ -4,6 +4,7 @@ import authReducer from "./authReducer";
 import userReducer from "./userReducer";
 import bookingReducer from "./bookingReducer";
 import eventReducer from "./eventReducer";
+import ratingReducer from "./ratingReducer";
 
 export default combineReducers({
   room: roomReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   user: userReducer,
   booking: bookingReducer,
   event: eventReducer,
+  rating: ratingReducer,
 });

@@ -1,6 +1,4 @@
-button:hover {
-  cursor: pointer;
-}
+@import url("https://fonts.googleapis.com/css2?family=Almendra+Display&family=Cookie&display=swap");
 
 .horizontalCenter {
   display: flex;
@@ -113,4 +111,26 @@ button:hover {
   .margin {
     margin-top: 20px;
   }
+}
+
+.bttn {
+  border: 2px solid black;
+  background-color: white;
+}
+.bttn:hover {
+  background-color: black;
+  color: white;
+}
+
+.headTitle {
+  width: 100%;
+  text-align: center;
+  font-family: "Cookie", cursive;
+  font-size: 50px;
+}
+
+.me {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  padding-right: 10px;
 }

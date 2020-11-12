@@ -6,7 +6,7 @@ import moment from "moment";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import eventActions from "../../redux/actions/eventActions";
-import "./addEventPage.css";
+import "../owner/addEventPage.css";
 
 const AddEventPage = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const AddEventPage = () => {
         posterUrl
       )
     );
-    history.pushState("/owner/events");
+    history.pushState("/staff/events");
   };
 
   const layout = {

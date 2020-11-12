@@ -104,7 +104,7 @@ const RoomsPage = () => {
                   style={{
                     width: "40px",
                     height: "4px",
-                    backgroundColor: "#b56576",
+                    backgroundColor: "#60495a",
                     color: "transparent",
                   }}
                 />{" "}
@@ -116,7 +116,7 @@ const RoomsPage = () => {
                   style={{
                     width: "40px",
                     height: "4px",
-                    backgroundColor: "#b3a394",
+                    backgroundColor: "#e4b363",
                     color: "transparent",
                   }}
                 />{" "}
@@ -128,7 +128,7 @@ const RoomsPage = () => {
                   style={{
                     width: "40px",
                     height: "4px",
-                    backgroundColor: "#1f7a8c",
+                    backgroundColor: "#ffc0be",
                     color: "transparent",
                   }}
                 />{" "}
@@ -139,7 +139,10 @@ const RoomsPage = () => {
           </div>
         </div>
         <div className="margin">
-          <button onClick={() => history.push("/owner/rooms/add")}>
+          <button
+            className="bttn"
+            onClick={() => history.push("/owner/rooms/add")}
+          >
             Add room
           </button>
         </div>

@@ -60,7 +60,7 @@ const EventManagement = () => {
       <div className="horizontalCenter">
         <button
           className="bttn"
-          onClick={() => history.push("/owner/events/add")}
+          onClick={() => history.push("/staff/events/add")}
         >
           Add event
         </button>

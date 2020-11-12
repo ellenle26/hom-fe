@@ -25,6 +25,7 @@ const RoomStatus = () => {
   const setRoomStat = (stat) => {
     if (selectedRoom === "" || selectedRoomId === "") {
       message.warning("Please select room first");
+      return;
     }
     dispatch(roomActions.changeRoomStat(stat, selectedRoomId));
   };

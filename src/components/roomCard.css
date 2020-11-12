@@ -52,3 +52,17 @@
   text-align: center;
   font-style: italic;
 }
+
+.review {
+  width: 100%;
+}
+
+.rate {
+  border-bottom: solid 1px lightgray;
+}
+
+.avatarpic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+}

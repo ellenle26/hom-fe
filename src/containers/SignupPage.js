@@ -61,7 +61,7 @@ const SignupPage = () => {
       <NavBar />
       <div className="register margin">
         <div>
-          <h1 className="horizontalCenter">Sign up</h1>
+          <div className="headTitle">Sign up</div>
           <Form {...layout} form={form} onFinish={onFinish}>
             <Form.Item
               name="name"
@@ -125,6 +125,7 @@ const SignupPage = () => {
               <Button type="primary" htmlType="submit">
                 Sign up
               </Button>
+              &nbsp;
               <Button htmlType="button" onClick={onReset}>
                 Reset form
               </Button>

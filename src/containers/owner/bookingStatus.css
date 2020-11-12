@@ -20,10 +20,11 @@
 
 .secondCol {
   padding-left: 160px;
+  overflow: hidden;
 }
 
 .expand {
-  min-width: 120px;
+  min-width: 150px;
 }
 
 @media only screen and (max-width: 950px) {

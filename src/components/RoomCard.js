@@ -1,12 +1,59 @@
-import React, { useState } from "react";
-import { DatePicker, Space, message, Modal, Carousel } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  DatePicker,
+  Space,
+  message,
+  Modal,
+  Carousel,
+  Rate,
+  Form,
+  Input,
+  Button,
+  Col,
+} from "antd";
+import { UserOutlined, EditOutlined, StarFilled } from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 import moment from "moment";
 import "./roomCard.css";
 
-const RoomCard = ({ room, bookRoom, setCheckIn, setCheckOut }) => {
+const RoomCard = ({
+  room,
+  bookRoom,
+  setCheckIn,
+  setCheckOut,
+  ratingsByRoom,
+  addRatingByRoom,
+  getRatings,
+}) => {
+  const history = useHistory();
   const [visible, setVisible] = useState(false);
+  const [visibleComment, setVisibleComment] = useState(false);
   const { RangePicker } = DatePicker;
+  const isAuthorized = useSelector((state) => state.auth.isAuthorized);
+  const [rating, setRating] = useState();
+  let roomRatings = ratingsByRoom(room._id);
+  const [form] = Form.useForm();
+  const { TextArea } = Input;
+  const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+  };
+
+  const averageRating = (array) => {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+      sum += array[i].rating;
+    }
+    let average = sum / array.length;
+    return average;
+  };
+
+  let averageRoomRating = averageRating(roomRatings);
+
+  const onFinish = (values) => {
+    addRatingByRoom(room._id, rating, values.review);
+    getRatings();
+  };
 
   function onChange(dates) {
     if (dates) {
@@ -63,8 +110,24 @@ const RoomCard = ({ room, bookRoom, setCheckIn, setCheckOut }) => {
             <li>{fac}</li>
           ))}
         </ul>
-        <div>
-          <UserOutlined /> {room.capacity}
+        <div className="horizontalJustify">
+          <div style={{}}>
+            <UserOutlined /> {room.capacity}
+          </div>
+          <div>
+            <Rate
+              allowHalf
+              defaultValue={
+                !isNaN(averageRoomRating) && averageRoomRating !== 0
+                  ? averageRoomRating
+                  : 5
+              }
+              style={{ color: "#ffc758" }}
+              disabled
+            />
+            &nbsp;
+            <EditOutlined onClick={() => setVisibleComment(true)} />
+          </div>
         </div>
         <br />
         <div>Please select your stay:</div>
@@ -108,13 +171,100 @@ const RoomCard = ({ room, bookRoom, setCheckIn, setCheckOut }) => {
           width: "100%",
         }}
       >
-        <Carousel dotPosition="right" autoplay={true}>
+        <Carousel dotPosition="right">
           {room.roomImages.map((img) => (
             <div className="divCar horizontalCenter">
               <img src={img} alt="" className="imgCar" />
             </div>
           ))}
         </Carousel>
+      </Modal>
+      <Modal
+        title="Reviews"
+        visible={visibleComment}
+        onCancel={() => setVisibleComment(false)}
+        footer={null}
+        width="100vw"
+        centered
+        bodyStyle={{
+          height: "75vh",
+          backgroundColor: "white",
+          overflow: "hidden",
+          width: "100%",
+        }}
+      >
+        {roomRatings && (
+          <div>
+            {isAuthorized ? (
+              <Form form={form} name="control-hooks" onFinish={onFinish}>
+                <Form.Item name="review" label="Review">
+                  <TextArea style={{ width: "100%" }} />
+                </Form.Item>
+                <Form.Item {...tailLayout}>
+                  <Rate
+                    allowHalf
+                    defaultValue={2.5}
+                    style={{ color: "#ffc758" }}
+                    onChange={(value) => {
+                      setRating(value);
+                    }}
+                  />
+                  &nbsp;&nbsp;
+                  <Button type="link" htmlType="submit">
+                    Review
+                  </Button>
+                </Form.Item>
+              </Form>
+            ) : (
+              <></>
+            )}
+
+            <h2>
+              <StarFilled style={{ fontSize: "25px", color: "#ed3b5a" }} />{" "}
+              {!isNaN(averageRoomRating) && averageRoomRating !== 0
+                ? averageRoomRating
+                : "No rating"}{" "}
+              &nbsp; ({room.rating.length}&nbsp; review(s))
+            </h2>
+
+            {roomRatings &&
+              roomRatings.map((review) => (
+                <>
+                  <div className="horizontalLeft">
+                    <img
+                      className="avatarpic"
+                      src={review.user.avatarUrl}
+                      alt=""
+                    />{" "}
+                    &nbsp;&nbsp;
+                    <div>
+                      <h3>{review.user.name}</h3>
+                      <div>
+                        {" "}
+                        <Rate
+                          allowHalf
+                          defaultValue={review.rating}
+                          style={{ color: "#ffc758", fontSize: "12px" }}
+                          disabled
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div
+                    style={{
+                      borderBottom: "dashed 1px lightgray",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    {review.review}
+                  </div>
+                </>
+              ))}
+            <br />
+            <button className="bttn">Show more reviews</button>
+          </div>
+        )}
       </Modal>
     </div>
   );

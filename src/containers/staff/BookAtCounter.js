@@ -108,6 +108,7 @@ const BookAtCounter = () => {
                 </Space>
                 &nbsp;
                 <button
+                  className="bttn"
                   onClick={() => {
                     bookRoom(room._id, room.price);
                   }}
@@ -118,16 +119,20 @@ const BookAtCounter = () => {
             </div>
           ))}
       </div>
-      <div className="container verticalCenter">
+      <div className="container verticalCenter margin">
         <h3>Search customer's booking</h3>
         <div className="horizontalCenter">
           <Search
-            placeholder="Search by booking#"
+            placeholder="Search booking# or phone#"
             onSearch={onSearch}
-            style={{ width: 220 }}
+            style={{ width: 250 }}
           />{" "}
           &nbsp;
-          <button type="button" onClick={() => searchBookingToday()}>
+          <button
+            className="bttn"
+            type="button"
+            onClick={() => searchBookingToday()}
+          >
             Search today booking
           </button>
         </div>{" "}

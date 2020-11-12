@@ -7,18 +7,33 @@ import bookingActions from "../redux/actions/bookingActions";
 import RoomCard from "../components/RoomCard";
 import NavBar from "./NavBar";
 import Footer from "../components/Footer";
+import ratingActions from "../redux/actions/ratingActions";
 
 const RoomList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const roomList = useSelector((state) => state.room.roomList);
   const user = useSelector((state) => state.auth.user);
+  const ratingList = useSelector((state) => state.rating.ratingList);
   const [checkIn, setCheckIn] = useState();
   const [checkOut, setCheckOut] = useState();
   const redirectUrl = useSelector((state) => state.booking.redirect);
 
   const getRoomList = () => {
     dispatch(roomActions.getRooms());
+  };
+
+  const getRatings = () => {
+    dispatch(ratingActions.getRatings());
+  };
+
+  const ratingsByRoom = (id) => {
+    const list = ratingList.filter((item) => item.room._id === id);
+    return list;
+  };
+
+  const addRatingByRoom = (roomId, rating, review) => {
+    dispatch(ratingActions.addRating(roomId, rating, review));
   };
 
   const bookRoom = (roomId, price) => {
@@ -39,6 +54,7 @@ const RoomList = () => {
 
   useEffect(() => {
     getRoomList();
+    getRatings();
   }, []);
 
   if (redirectUrl) {
@@ -50,6 +66,7 @@ const RoomList = () => {
     <>
       <NavBar />
       <div className="verticalCenter container margin">
+        <div className="headTitle">Rooms</div>
         {roomList &&
           roomList.map((room) => (
             <RoomCard
@@ -57,6 +74,9 @@ const RoomList = () => {
               bookRoom={bookRoom}
               setCheckIn={setCheckIn}
               setCheckOut={setCheckOut}
+              ratingsByRoom={ratingsByRoom}
+              addRatingByRoom={addRatingByRoom}
+              getRatings={getRatings}
               key={room._id}
             />
           ))}

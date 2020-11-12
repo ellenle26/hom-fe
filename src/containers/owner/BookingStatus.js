@@ -22,20 +22,20 @@ const BookingStatus = () => {
     dispatch(bookingActions.changeStatus(email, num, paid));
   };
 
-  const paymentdue = (date) => {
+  const paymentdue = (date, status) => {
     let day = Math.round(
       (moment(Date.now()).format("x") - moment(date).format("x")) /
         (1000 * 3600 * 24)
     );
-    if (day < 7) {
+    if (day >= 7 && status === "pending") {
+      let showDate = "Overdue";
+      return showDate;
+    } else {
       let dateFormat = new Date(date);
       dateFormat = dateFormat.getTime();
       let addDate = dateFormat + 7 * 1000 * 3600 * 24;
       let showDate = new Date(addDate);
       return moment(showDate).format("MMM Do YY");
-    } else if (day >= 7) {
-      let showDate = "Overdue";
-      return showDate;
     }
   };
 
@@ -48,7 +48,7 @@ const BookingStatus = () => {
   }, []);
 
   return (
-    <div className="table-div">
+    <div className="table-div margin">
       <table className="table">
         <tr style={{ fontWeight: "bold" }}>
           <td
@@ -57,7 +57,8 @@ const BookingStatus = () => {
           >
             Booking #
           </td>
-          <td className="secondCol">Booking Id</td>
+          <td className="secondCol">Booking email</td>
+          <td className="expand">Booking notes</td>
           <td className="expand">Checkin Date</td>
           <td className="expand">Room</td>
           <td className="expand">Payment due</td>
@@ -87,10 +88,11 @@ const BookingStatus = () => {
                   </>
                 )}
               </td>
-              <td className="secondCol">{item._id}</td>
+              <td className="secondCol">{item.user.email}</td>
+              <td className="expand">{item.userNote}</td>
               <td>{moment(item.checkIn).format("MMM Do YY")}</td>
               <td className="expand">{item.room.name}</td>
-              <td>{paymentdue(item.createdAt)}</td>
+              <td>{paymentdue(item.createdAt, item.status)}</td>
               <td className="expand">
                 {item.status === "paid" ? (
                   <>

@@ -196,9 +196,10 @@ const AddRoomPage = () => {
           </div>
           <br />
           <div className="horizontalCenter">
-            <Button type="primary" htmlType="submit">
+            <Button className="bttn" htmlType="submit">
               Create room
             </Button>
+            &nbsp;
             <Button htmlType="button" onClick={onReset}>
               Reset form
             </Button>

@@ -57,9 +57,9 @@ const EventPage = () => {
 
   return (
     <>
-      {console.log("event list neeee", eventByDate)}
       <NavBar />
       <div className="verticalCenter container margin">
+        <div className="headTitle">Events</div>
         <Calendar
           fullscreen={false}
           mode="month"

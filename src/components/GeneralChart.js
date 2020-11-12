@@ -58,21 +58,36 @@ const GeneralChart = ({ roomList, totalRevenue }) => {
           color="#b56576"
           data={totalRevenue(roomList[2].booking)}
         />
-        {/* <VerticalBarSeries
-            cluster="2020"
-            color="lightblue"
-            data={totalRevenue(roomList[3].booking)}
-          />
-          <VerticalBarSeries
-            cluster="2020"
-            color="orange"
-            data={totalRevenue(roomList[4].booking)}
-          />
-          <VerticalBarSeries
-            cluster="2020"
-            color="beige"
-            data={totalRevenue(roomList[5].booking)}
-          /> */}
+        <VerticalBarSeries
+          onValueMouseOver={(datapoint, event) => {
+            setCurrentMonth(datapoint.x);
+            setCurrentData(datapoint.y);
+            setCurrentRoom(roomList[3].name);
+          }}
+          cluster="2020"
+          color="#60495a"
+          data={totalRevenue(roomList[3].booking)}
+        />
+        <VerticalBarSeries
+          onValueMouseOver={(datapoint, event) => {
+            setCurrentMonth(datapoint.x);
+            setCurrentData(datapoint.y);
+            setCurrentRoom(roomList[4].name);
+          }}
+          cluster="2020"
+          color="#e4b363"
+          data={totalRevenue(roomList[4].booking)}
+        />
+        <VerticalBarSeries
+          onValueMouseOver={(datapoint, event) => {
+            setCurrentMonth(datapoint.x);
+            setCurrentData(datapoint.y);
+            setCurrentRoom(roomList[5].name);
+          }}
+          cluster="2020"
+          color="#ffc0be"
+          data={totalRevenue(roomList[5].booking)}
+        />
       </XYPlot>
       &nbsp;
       <div className="verticalLeft">
@@ -112,6 +127,42 @@ const GeneralChart = ({ roomList, totalRevenue }) => {
           />{" "}
           &nbsp;
           {roomList[2].name}
+        </div>
+        <div className="horizontalCenter">
+          <hr
+            style={{
+              width: "40px",
+              height: "4px",
+              backgroundColor: "#60495a",
+              color: "transparent",
+            }}
+          />{" "}
+          &nbsp;
+          {roomList[3].name}
+        </div>
+        <div className="horizontalCenter">
+          <hr
+            style={{
+              width: "40px",
+              height: "4px",
+              backgroundColor: "#e4b363",
+              color: "transparent",
+            }}
+          />{" "}
+          &nbsp;
+          {roomList[4].name}
+        </div>
+        <div className="horizontalCenter">
+          <hr
+            style={{
+              width: "40px",
+              height: "4px",
+              backgroundColor: "#ffc0be",
+              color: "transparent",
+            }}
+          />{" "}
+          &nbsp;
+          {roomList[5].name}
         </div>
         <br />
         <div>

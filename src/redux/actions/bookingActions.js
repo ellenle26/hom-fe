@@ -92,6 +92,7 @@ bookingActions.changeBookingStat = (selectedRoomId, date, stat) => async (
     dispatch({ type: types.SET_BOOKING_STAT_SUCCESS, payload: res.data.data });
   } catch (err) {
     dispatch({ type: types.SET_BOOKING_STAT_FAILURE, pyaload: err.message });
+    message.error(err.message);
   }
 };
 

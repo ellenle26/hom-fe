@@ -19,7 +19,7 @@ const GeneralPage = () => {
         item.status !== "processing" &&
         item.status !== "cancelled"
     );
-    let dataArr = [];
+    let dataArr = [{ x: "0", y: 0 }];
     let month = [
       "Jan",
       "Feb",
@@ -71,11 +71,14 @@ const GeneralPage = () => {
           <GeneralChart totalRevenue={totalRevenue} roomList={roomList} />
         )}
       </div>
-      <div style={{ width: "100vw", overflowX: "scroll", maxWidth: "100%" }}>
+      <div
+        style={{ width: "100vw", overflowX: "scroll", maxWidth: "100%" }}
+        className="margin"
+      >
         <div style={{ padding: "20px 20px" }}>
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
-            className="download-table-xls-button"
+            className="download-table-xls-button bttn"
             table="table-to-xls"
             filename="tablexls"
             sheet="tablexls"

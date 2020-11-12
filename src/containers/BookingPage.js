@@ -67,7 +67,7 @@ const BookingPage = () => {
       <NavBar />
       <div className="verticalJustify container margin">
         {bookingList && console.log("list booking day ne huhu", bookingList)}
-        <h2>Booking</h2>
+        <div className="headTitle">Bookings</div>
         {bookingList.length < 0 ? (
           <div>loading</div>
         ) : bookingList.length == 0 ? (
@@ -159,7 +159,7 @@ const BookingPage = () => {
                   </div>
                 </div>
                 <Form.Item>
-                  <Button type="primary" htmlType="submit">
+                  <Button className="bttn" htmlType="submit">
                     Confirm payment
                   </Button>
                 </Form.Item>
