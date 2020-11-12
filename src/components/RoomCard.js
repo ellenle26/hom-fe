@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   DatePicker,
@@ -10,9 +10,14 @@ import {
   Form,
   Input,
   Button,
-  Col,
 } from "antd";
-import { UserOutlined, EditOutlined, StarFilled } from "@ant-design/icons";
+import {
+  UserOutlined,
+  EditOutlined,
+  StarFilled,
+  DoubleLeftOutlined,
+  DoubleRightOutlined,
+} from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 import "./roomCard.css";
@@ -45,7 +50,11 @@ const RoomCard = ({
       sum += array[i].rating;
     }
     let average = sum / array.length;
-    return average;
+    if (isNaN(average)) {
+      return (average = 5);
+    } else {
+      return average;
+    }
   };
 
   let averageRoomRating = averageRating(roomRatings);
@@ -80,6 +89,10 @@ const RoomCard = ({
     }
     return a;
   };
+
+  const [slide, setSlide] = useState(0);
+
+  const slider = useRef();
 
   return (
     <div
@@ -117,11 +130,7 @@ const RoomCard = ({
           <div>
             <Rate
               allowHalf
-              defaultValue={
-                !isNaN(averageRoomRating) && averageRoomRating !== 0
-                  ? averageRoomRating
-                  : 5
-              }
+              defaultValue={averageRoomRating}
               style={{ color: "#ffc758" }}
               disabled
             />
@@ -171,13 +180,37 @@ const RoomCard = ({
           width: "100%",
         }}
       >
-        <Carousel dotPosition="right">
+        <Carousel
+          dots={false}
+          ref={(ref) => {
+            console.log(ref);
+            slider.current = ref;
+          }}
+        >
           {room.roomImages.map((img) => (
             <div className="divCar horizontalCenter">
               <img src={img} alt="" className="imgCar" />
             </div>
           ))}
         </Carousel>
+        <DoubleLeftOutlined
+          style={{
+            fontSize: "25px",
+            color: "white",
+            position: "absolute",
+            top: "50%",
+            left: "30px",
+          }}
+        />
+        <DoubleRightOutlined
+          style={{
+            fontSize: "25px",
+            color: "white",
+            position: "absolute",
+            top: "50%",
+            right: "30px",
+          }}
+        />
       </Modal>
       <Modal
         title="Reviews"
@@ -221,10 +254,7 @@ const RoomCard = ({
 
             <h2>
               <StarFilled style={{ fontSize: "25px", color: "#ed3b5a" }} />{" "}
-              {!isNaN(averageRoomRating) && averageRoomRating !== 0
-                ? averageRoomRating
-                : "No rating"}{" "}
-              &nbsp; ({room.rating.length}&nbsp; review(s))
+              {averageRoomRating}&nbsp; ({room.rating.length}&nbsp; review(s))
             </h2>
 
             {roomRatings &&

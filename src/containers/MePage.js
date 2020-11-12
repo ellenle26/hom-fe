@@ -16,6 +16,11 @@ const MePage = () => {
 
   const bookings = bookingList.filter((item) => item.user._id === user._id);
 
+  const cancelPendingBooking = (bookingId) => {
+    dispatch(bookingActions.cancelPendingBooking(bookingId));
+    getBookings();
+  };
+
   useEffect(() => {
     getBookings();
   }, []);
@@ -55,7 +60,17 @@ const MePage = () => {
                   {moment(b.checkIn).format("YYYY-MM-DD")} -{" "}
                   {moment(b.checkOut).format("YYYY-MM-DD")}
                 </div>
-                <div>{b.status}</div>
+                <div>
+                  {b.status}&nbsp;
+                  {b.status === "pending" ? (
+                    <>
+                      -&nbsp;
+                      <a onClick={() => cancelPendingBooking(b._id)}>cancel</a>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
             </div>
           ))
