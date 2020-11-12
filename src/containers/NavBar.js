@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   UpOutlined,
   LoginOutlined,
@@ -11,6 +11,7 @@ import {
   LogoutOutlined,
   SmileOutlined,
 } from "@ant-design/icons";
+import { message } from "antd";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
@@ -20,6 +21,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.auth.user);
+  let [message, setMessage] = useState("");
   const logOut = () => {
     dispatch(authActions.logout());
     history.push("/");
@@ -76,7 +78,12 @@ const NavBar = () => {
             </div>
             <div className="item">
               <div className="item1">ROOMS</div>
-              <div className="item2" onClick={() => history.push("/rooms")}>
+              <div
+                className="item2"
+                onClick={() => {
+                  history.push("/rooms");
+                }}
+              >
                 <BorderOutlined style={{ fontSize: "20px" }} />
               </div>
             </div>
@@ -153,7 +160,12 @@ const NavBar = () => {
             </div>
             <div className="item">
               <div className="item1">ROOMS</div>
-              <div className="item2" onClick={() => history.push("/rooms")}>
+              <div
+                className="item2"
+                onClick={() => {
+                  history.push("/rooms");
+                }}
+              >
                 <BorderOutlined style={{ fontSize: "20px" }} />
               </div>
             </div>

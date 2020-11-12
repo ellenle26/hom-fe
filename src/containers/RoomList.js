@@ -9,7 +9,9 @@ import NavBar from "./NavBar";
 import Footer from "../components/Footer";
 import { LoadingOutlined } from "@ant-design/icons";
 import ratingActions from "../redux/actions/ratingActions";
+import socketIOClient from "socket.io-client";
 
+let socket;
 const RoomList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -18,7 +20,23 @@ const RoomList = () => {
   const ratingList = useSelector((state) => state.rating.ratingList);
   const [checkIn, setCheckIn] = useState();
   const [checkOut, setCheckOut] = useState();
+  const [alert, setAlert] = useState();
   const redirectUrl = useSelector((state) => state.booking.redirect);
+
+  const socketConnect = () => {
+    socket = socketIOClient("http://localhost:5005");
+    getConnectAlert();
+    return () => {
+      socket.disconnect();
+    };
+  };
+
+  const getConnectAlert = () => {
+    socket.on("receive", (mess) => {
+      console.log(mess);
+      setAlert(mess);
+    });
+  };
 
   const getRoomList = () => {
     dispatch(roomActions.getRooms());
@@ -56,7 +74,12 @@ const RoomList = () => {
   useEffect(() => {
     getRoomList();
     getRatings();
+    socketConnect();
   }, []);
+
+  useEffect(() => {
+    if (alert) message.success(alert);
+  }, [alert]);
 
   if (redirectUrl) {
     dispatch(bookingActions.clearRedirect());
