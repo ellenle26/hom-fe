@@ -10,6 +10,7 @@ import {
   Form,
   Input,
   Button,
+  TimePicker,
 } from "antd";
 import {
   UserOutlined,
@@ -90,9 +91,12 @@ const RoomCard = ({
     return a;
   };
 
-  const [slide, setSlide] = useState(0);
+  let [slide, setSlide] = useState(0);
 
   const slider = useRef();
+
+  const min = 0;
+  const max = room.roomImages.length - 1;
 
   return (
     <div
@@ -181,9 +185,9 @@ const RoomCard = ({
         }}
       >
         <Carousel
-          dots={false}
+          arrows
+          dotPosition="bottom"
           ref={(ref) => {
-            console.log(ref);
             slider.current = ref;
           }}
         >
@@ -201,6 +205,15 @@ const RoomCard = ({
             top: "50%",
             left: "30px",
           }}
+          onClick={() => {
+            if (slide > min) {
+              let tempSlide = slide - 1;
+              slider.current.goTo(tempSlide);
+              setSlide(tempSlide);
+            } else {
+              setSlide(max);
+            }
+          }}
         />
         <DoubleRightOutlined
           style={{
@@ -209,6 +222,15 @@ const RoomCard = ({
             position: "absolute",
             top: "50%",
             right: "30px",
+          }}
+          onClick={() => {
+            if (slide < max) {
+              let tempSlide = slide + 1;
+              setSlide(tempSlide);
+              slider.current.goTo(tempSlide);
+            } else {
+              setSlide(min);
+            }
           }}
         />
       </Modal>

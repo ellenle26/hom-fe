@@ -7,6 +7,7 @@ import bookingActions from "../redux/actions/bookingActions";
 import RoomCard from "../components/RoomCard";
 import NavBar from "./NavBar";
 import Footer from "../components/Footer";
+import { LoadingOutlined } from "@ant-design/icons";
 import ratingActions from "../redux/actions/ratingActions";
 
 const RoomList = () => {
@@ -67,7 +68,18 @@ const RoomList = () => {
       <NavBar />
       <div className="verticalCenter container margin">
         <div className="headTitle">Rooms</div>
-        {roomList &&
+        {roomList.length == 0 ? (
+          <div
+            style={{
+              width: "100%",
+              textAlign: "center",
+              position: "absolute",
+              top: "40vh",
+            }}
+          >
+            <LoadingOutlined style={{ fontSize: "40px" }} spin />
+          </div>
+        ) : (
           roomList.map((room) => (
             <RoomCard
               room={room}
@@ -79,7 +91,8 @@ const RoomList = () => {
               getRatings={getRatings}
               key={room._id}
             />
-          ))}
+          ))
+        )}
       </div>
       <Footer />
     </>
