@@ -78,7 +78,7 @@ const RoomList = () => {
   }, []);
 
   useEffect(() => {
-    if (alert) message.success(alert);
+    if (alert) message.info(alert);
   }, [alert]);
 
   if (redirectUrl) {
