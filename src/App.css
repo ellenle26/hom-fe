@@ -120,6 +120,12 @@
 .bttn:hover {
   background-color: black;
   color: white;
+  text-decoration: none;
+  outline: none;
+}
+
+.bttn:focus {
+  outline: none;
 }
 
 .headTitle {

@@ -24,7 +24,7 @@
 }
 
 .expand {
-  min-width: 150px;
+  min-width: 200px;
 }
 
 @media only screen and (max-width: 950px) {

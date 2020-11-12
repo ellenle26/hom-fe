@@ -68,7 +68,7 @@ const AddRoomPage = () => {
   //       price,
   return (
     <div>
-      <div>
+      <div className="margin">
         <h1 className="horizontalCenter">Add room</h1>
         <Form {...layout} form={form} onFinish={onFinish}>
           <Form.Item
@@ -98,8 +98,8 @@ const AddRoomPage = () => {
             rules={[
               {
                 validator: async (_, names) => {
-                  if (!names || names.length < 2) {
-                    return Promise.reject(new Error("At least 2 facilities"));
+                  if (!names || names.length < 1) {
+                    return Promise.reject(new Error("At least 1 facility"));
                   }
                 },
               },
@@ -114,14 +114,17 @@ const AddRoomPage = () => {
                     key={field.key}
                   >
                     <Form.Item
+                      wrapperCol={{
+                        xs: { span: 24, offset: 0 },
+                        sm: { span: 8, offset: 8 },
+                      }}
                       {...field}
                       validateTrigger={["onChange", "onBlur"]}
                       rules={[
                         {
                           required: true,
                           whitespace: true,
-                          message:
-                            "Please input passenger's name or delete this field.",
+                          message: "",
                         },
                       ]}
                       noStyle
