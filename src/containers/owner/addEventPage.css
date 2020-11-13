@@ -1,9 +1,9 @@
-.poster {
+.posterin {
   width: 50vw;
   height: auto;
   text-align: center;
 }
 
-.poster:hover {
+.posterin:hover {
   cursor: pointer;
 }

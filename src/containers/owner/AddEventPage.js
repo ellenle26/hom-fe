@@ -114,19 +114,18 @@ const AddEventPage = () => {
           >
             <TextArea />
           </Form.Item>
-
+          <br />
           <div className="verticalCenter">
             {posterUrl ? (
               <img
                 src={posterUrl}
                 alt=""
-                style={{ maxWidth: "100%" }}
-                className="poster"
+                className="posterin"
                 onClick={() => openWidget()}
               />
             ) : (
               <div
-                className="verticalCenter poster"
+                className="verticalCenter posterin"
                 onClick={() => openWidget()}
               >
                 <PlusOutlined />

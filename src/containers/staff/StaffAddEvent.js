@@ -121,12 +121,12 @@ const AddEventPage = () => {
                 src={posterUrl}
                 alt=""
                 style={{ maxWidth: "100%" }}
-                className="poster"
+                className="posterin"
                 onClick={() => openWidget()}
               />
             ) : (
               <div
-                className="verticalCenter poster"
+                className="verticalCenter posterin"
                 onClick={() => openWidget()}
               >
                 <PlusOutlined />
