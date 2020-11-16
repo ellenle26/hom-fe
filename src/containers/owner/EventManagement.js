@@ -51,8 +51,6 @@ const EventManagement = () => {
     dispatch(eventActions.getEvents());
   };
 
-  const editEvent = (eventId) => {};
-
   useEffect(() => {
     getEvents();
   }, []);
@@ -97,7 +95,10 @@ const EventManagement = () => {
                   </div>
                 </div>
                 <br />
-                <button className="bttn" onClick={() => editEvent(e._id)}>
+                <button
+                  className="bttn"
+                  onClick={() => history.push(`/owner/events/edit/${e._id}`)}
+                >
                   Edit event
                 </button>
               </>

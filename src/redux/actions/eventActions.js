@@ -47,4 +47,29 @@ eventActions.addEvent = (
   }
 };
 
+eventActions.editEvent = (
+  id,
+  name,
+  eventContent,
+  startDate,
+  endDate,
+  posterUrl
+) => async (dispatch) => {
+  dispatch({ type: types.EDIT_EVENT_REQUEST, payload: null });
+  try {
+    const res = await api.put(`/events`, {
+      id,
+      name,
+      eventContent,
+      startDate,
+      endDate,
+      posterUrl,
+    });
+    dispatch({ type: types.EDIT_EVENT_SUCCESS, payload: res.data.data });
+    message.success(res.data.message);
+  } catch (err) {
+    dispatch({ type: types.EDIT_EVENT_FAILURE, payload: err.message });
+  }
+};
+
 export default eventActions;

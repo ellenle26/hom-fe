@@ -26,9 +26,6 @@ const RoomList = () => {
   const socketConnect = () => {
     socket = socketIOClient("http://localhost:5005");
     getConnectAlert();
-    return () => {
-      socket.disconnect();
-    };
   };
 
   const getConnectAlert = () => {
@@ -75,6 +72,9 @@ const RoomList = () => {
     getRoomList();
     getRatings();
     socketConnect();
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   useEffect(() => {
