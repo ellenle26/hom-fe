@@ -3,12 +3,13 @@ import { Form, Input, Button } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import roomActions from "../../redux/actions/roomActions";
 
-const AddRoomPage = () => {
+const EditRoomPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const id = useParams();
   let [roomImages, setRoomImages] = useState([]);
 
   // handle form submission---------
@@ -17,7 +18,8 @@ const AddRoomPage = () => {
   const onFinish = (values) => {
     const { name, description, facilities, capacity, price } = values;
     dispatch(
-      roomActions.addRoom(
+      roomActions.editRoom(
+        id,
         name,
         description,
         facilities,
@@ -70,7 +72,7 @@ const AddRoomPage = () => {
   return (
     <div>
       <div className="margin">
-        <h1 className="horizontalCenter">Add room</h1>
+        <h1 className="horizontalCenter">Edit room</h1>
         <Form {...layout} form={form} onFinish={onFinish}>
           <Form.Item
             name="name"
@@ -201,7 +203,7 @@ const AddRoomPage = () => {
           <br />
           <div className="horizontalCenter">
             <Button className="bttn" htmlType="submit">
-              Create room
+              Edit room
             </Button>
             &nbsp;
             <Button htmlType="button" onClick={onReset}>
@@ -215,4 +217,4 @@ const AddRoomPage = () => {
   );
 };
 
-export default AddRoomPage;
+export default EditRoomPage;

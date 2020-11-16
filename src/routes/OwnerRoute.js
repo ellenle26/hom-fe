@@ -11,6 +11,7 @@ import { Tabs } from "antd";
 import NavBar from "../containers/NavBar";
 import Footer from "../components/Footer";
 import EditEventPage from "../containers/owner/EditEventPage";
+import EditRoomPage from "../containers/owner/EditRoomPage";
 
 const OwnerRoute = () => {
   const history = useHistory();
@@ -42,6 +43,7 @@ const OwnerRoute = () => {
         <Route exact path="/owner/events/add" component={AddEventPage} />
         <Route exact path="/owner/events/edit/:id" component={EditEventPage} />
         <Route exact path="/owner/general" component={GeneralPage} />
+        <Route exact path="/owner/rooms/edit/:id" component={EditRoomPage} />
       </Switch>
       <Footer />
     </>
