@@ -27,7 +27,7 @@ anh@gmail.com
 - As owner, you can:
   + do same as normal user.
   + have your own page to:
-    . change a user to staff or co-owner and vice versa.
+    . change a user to staff or co-owner and vice versa.<br/>
     . Add/Edit room.
     . See how many days each room was booked in 1 month.
     . See all bookings and confirm payment received.
