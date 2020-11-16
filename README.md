@@ -1,7 +1,5 @@
 # Final project: "hôm"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 Back-end link: https://github.com/ellenle26/hom-be
 
 ## Notes:
