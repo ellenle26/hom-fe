@@ -14,5 +14,5 @@ boss@gmail.com
 * Staff acc:
 linh@gmail.com
 
-* User acc: create your own account (all sign-up account will be set as user only) or use below.
+* User acc: create your own account and pass (all sign-up account will be set as user) or use below.
 anh@gmail.com
