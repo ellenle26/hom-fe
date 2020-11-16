@@ -103,18 +103,21 @@ const RoomList = () => {
             <LoadingOutlined style={{ fontSize: "40px" }} spin />
           </div>
         ) : (
-          roomList.map((room) => (
-            <RoomCard
-              room={room}
-              bookRoom={bookRoom}
-              setCheckIn={setCheckIn}
-              setCheckOut={setCheckOut}
-              ratingsByRoom={ratingsByRoom}
-              addRatingByRoom={addRatingByRoom}
-              getRatings={getRatings}
-              key={room._id}
-            />
-          ))
+          roomList.map(
+            (room) =>
+              room.isDeleted == false && (
+                <RoomCard
+                  room={room}
+                  bookRoom={bookRoom}
+                  setCheckIn={setCheckIn}
+                  setCheckOut={setCheckOut}
+                  ratingsByRoom={ratingsByRoom}
+                  addRatingByRoom={addRatingByRoom}
+                  getRatings={getRatings}
+                  key={room._id}
+                />
+              )
+          )
         )}
       </div>
       <Footer />
