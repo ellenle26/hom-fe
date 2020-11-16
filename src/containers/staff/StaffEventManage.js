@@ -81,19 +81,28 @@ const EventManagement = () => {
             <h3>Select date to see event details</h3>
           ) : (
             eventByDate.map((e) => (
-              <div className="wrap">
-                <img src={e.posterUrl} alt="" className="poster" />
-                <div className="econtent">
-                  <h3 className="eName">{e.name.toUpperCase()}</h3>
-                  <div className="what">{e.eventContent}</div>
-                  <br />
-                  <div className="timeStamp">
-                    On {moment(e.startDate).format("YYYY-MM-DD")} - from{" "}
-                    {moment(e.startDate).format("HH:mm")} to{" "}
-                    {moment(e.endDate).format("HH:mm")}
+              <>
+                <div className="wrap">
+                  <img src={e.posterUrl} alt="" className="poster" />
+                  <div className="econtent">
+                    <h3 className="eName">{e.name.toUpperCase()}</h3>
+                    <div className="what">{e.eventContent}</div>
+                    <br />
+                    <div className="timeStamp">
+                      On {moment(e.startDate).format("YYYY-MM-DD")} - from{" "}
+                      {moment(e.startDate).format("HH:mm")} to{" "}
+                      {moment(e.endDate).format("HH:mm")}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <br />
+                <button
+                  className="bttn"
+                  onClick={() => history.push(`/staff/events/edit/${e._id}`)}
+                >
+                  Edit event
+                </button>
+              </>
             ))
           )}
         </div>

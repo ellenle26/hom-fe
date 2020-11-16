@@ -146,6 +146,9 @@ const RoomsPage = () => {
             Add room
           </button>
         </div>
+        <div className="margin">
+          <div></div>
+        </div>
       </div>
     )
   );

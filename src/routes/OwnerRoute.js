@@ -10,8 +10,9 @@ import GeneralPage from "../containers/owner/GeneralPage";
 import { Tabs } from "antd";
 import NavBar from "../containers/NavBar";
 import Footer from "../components/Footer";
+import EditEventPage from "../containers/owner/EditEventPage";
 
-const StaffRoute = () => {
+const OwnerRoute = () => {
   const history = useHistory();
   const { TabPane } = Tabs;
   const callback = (key) => {
@@ -39,6 +40,7 @@ const StaffRoute = () => {
         <Route exact path="/owner/bookings" component={BookingStatus} />
         <Route exact path="/owner/events" component={EventManagement} />
         <Route exact path="/owner/events/add" component={AddEventPage} />
+        <Route exact path="/owner/events/edit/:id" component={EditEventPage} />
         <Route exact path="/owner/general" component={GeneralPage} />
       </Switch>
       <Footer />
@@ -46,4 +48,4 @@ const StaffRoute = () => {
   );
 };
 
-export default StaffRoute;
+export default OwnerRoute;

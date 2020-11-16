@@ -7,6 +7,7 @@ import NavBar from "../containers/NavBar";
 import Footer from "../components/Footer";
 import StaffEventManage from "../containers/staff/StaffEventManage";
 import StaffAddEvent from "../containers/staff/StaffAddEvent";
+import StaffEditEvent from "../containers/staff/StaffEditEvent";
 
 const StaffRoute = () => {
   const history = useHistory();
@@ -32,6 +33,7 @@ const StaffRoute = () => {
         <Route exact path="/staff/rooms" component={RoomStatus} />
         <Route exact path="/staff/events" component={StaffEventManage} />
         <Route exact path="/staff/events/add" component={StaffAddEvent} />
+        <Route exact path="/staff/events/edit/:id" component={StaffEditEvent} />
       </Switch>
       <Footer />
     </>
